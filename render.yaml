@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: legal-rag-api
+    runtime: docker
+    plan: free
+    branch: main
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: BASIC_AUTH_USER
+        value: legal_user
+      - key: BASIC_AUTH_PASS
+        generateValue: true
+      - key: MISTRAL_API_BASE_URL
+        sync: false
+    healthCheckPath: /api/v1/health
