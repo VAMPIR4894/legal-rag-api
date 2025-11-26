@@ -1,0 +1,11 @@
+chromadb==0.4.22
+sentence-transformers
+numpy==1.26.4
+tqdm
+rank_bm25
+requests
+flask
+flask-httpauth
+pydantic
+python-dotenv
+gunicorn

@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  legal-rag-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=8080
+      - MISTRAL_API_BASE_URL=${MISTRAL_API_BASE_URL}
+      - BASIC_AUTH_USER=${BASIC_AUTH_USER:-legal_user}
+      - BASIC_AUTH_PASS=${BASIC_AUTH_PASS:-super_secure_password123}
+    ports:
+      - "8080:8080"
+    volumes:
+      # ChromaDB Persistence (fixed path)
+      - chromadb_data:/app/data/vectordb
+      # BM25 Indexes
+      - ./data/bm25_indexes:/app/data/bm25_indexes
+    restart: always
+
+volumes:
+  chromadb_data:
+    driver: local

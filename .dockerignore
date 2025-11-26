@@ -1,0 +1,26 @@
+# Virtual environment
+venv/
+.venv/
+__pycache__/
+
+# Python build artifacts
+*.pyc
+*.pyo
+*.pyd
+.Python
+.ipynb_checkpoints
+
+# ChromaDB/Data
+data/vectordbs/chroma_data/
+# Note: We exclude source code data dir but explicitly include specific BM25 files 
+# via the volume mount in docker-compose, or build them inside the container.
+
+# Environment and Logs
+.env
+.DS_Store
+logs/
+
+# Model downloads (Large files)
+*.safetensors
+*.bin
+*.pth
